@@ -1,12 +1,14 @@
+# -*- coding: utf-8 -*-
+
 import oauth2 as oauth
 import urllib2 as urllib
 
 # See assignment1.html instructions or README for how to get these credentials
 
-api_key = "<Enter api key>"
-api_secret = "<Enter api secret>"
-access_token_key = "<Enter your access token key here>"
-access_token_secret = "<Enter your access token secret here>"
+api_key = "N0LMj4WjrPfLXtrclUluX02Kc"
+api_secret = "FLU7ipZtf6lq8ZNADnfAmzBFzovdTNvHrEZjt31Gx1TCByOXn7"
+access_token_key = "171739549-uIEmuY6CIFxH9IpujVt7Nf3L4WKdvPBwkwfUuCMq"
+access_token_secret = "eoagcLlvXtHkzDxtjTt3MhNrUVuLrWt38yF458wVMFGD6"
 
 _debug = 0
 
@@ -29,7 +31,7 @@ def twitterreq(url, method, parameters):
   req = oauth.Request.from_consumer_and_token(oauth_consumer,
                                              token=oauth_token,
                                              http_method=http_method,
-                                             http_url=url, 
+                                             http_url=url,
                                              parameters=parameters)
 
   req.sign_request(signature_method_hmac_sha1, oauth_consumer, oauth_token)
@@ -52,6 +54,7 @@ def twitterreq(url, method, parameters):
 
 def fetchsamples():
   url = "https://stream.twitter.com/1/statuses/sample.json"
+  #url = "https://api.twitter.com/1.1/search/tweets.json?q=USA&src=typd"
   parameters = []
   response = twitterreq(url, "GET", parameters)
   for line in response:
